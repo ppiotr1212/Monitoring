@@ -1,0 +1,4 @@
+.vagrant
+Ansible_roles*
+Prometheus*
+ELK*

@@ -1,0 +1,7 @@
+---
+roles:
+  - name: geerlingguy.docker
+    version: 4.1.3
+  - name: darexsu.elk
+    version: v0.2.1
+    

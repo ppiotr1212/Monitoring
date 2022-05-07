@@ -1,0 +1,32 @@
+---
+- name: monitoring
+  hosts: all
+  vars:
+    deployment_path: "~/Prometheus"
+    git_repository: "https://github.com/Panda-Academy-Core-2-0/Prometheus"
+    git_branch: "main"
+
+  tasks:
+  - name: Install pip3
+    become: true
+    package:
+      name: python3-pip
+      state: present 
+  
+  - name: Install docker-compose python package
+    pip:
+      name: 
+      - docker
+      - docker-compose
+
+  - name: Git checkout
+    git:
+      repo: "{{ git_repository }}"
+      dest: "{{ deployment_path }}"
+      version: "{{ git_branch }}"
+
+  - name: Run `docker-compose up`
+    docker_compose:
+      project_src: "{{ deployment_path }}"
+      build: yes
+      debug: yes

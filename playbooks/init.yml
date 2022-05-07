@@ -1,0 +1,13 @@
+---
+- name: init
+  hosts: all
+  become: true
+  vars:
+    docker_users:
+      - panda
+      - vagrant
+  roles:
+    - user
+    - packages
+    - geerlingguy.docker
+
